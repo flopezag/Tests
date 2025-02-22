@@ -46,7 +46,7 @@ Feature: test tutorial 601 Introduction to Linked Data (Stellio)
       And  I set header Accept to application/ld+json
       And  the params equal to "type=https://smartdatamodels.org/dataModel.Building/Building"
       And  I perform the request
-      Then I receive a HTTP "200" response code from Stellio with the body equal to "response601-04-array.json"
+      Then I receive a HTTP "200" response code from Stellio with the body equal to "response601-04.json"
 
 
     Scenario: [5] OBTAIN ENTITY DATA BY ID
@@ -77,7 +77,7 @@ Feature: test tutorial 601 Introduction to Linked Data (Stellio)
     Scenario: [8] FILTER CONTEXT DATA BY COMPARING THE VALUES OF AN ATTRIBUTE IN AN ARRAY
       When  I set the "Accept" header with the value "application/ld+json"
       And   I set the "Link" header with the value "<https://smart-data-models.github.io/dataModel.Building/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json""
-      And   I set the url to "http://localhost:1026/ngsi-ld/v1/entities?type=Building&q=category==%22commercial%22,%22office%22&options=keyValues"
+      And   I set the url to "http://localhost:1026/ngsi-ld/v1/entities?type=Building&q=category==%22commercial%22,%22office%22&options=keyValues&expandValues=category"
       And   I send a GET HTTP request to that url
       Then  I receive from Stellio "200" response code with the body equal to "response601-08.json"
 

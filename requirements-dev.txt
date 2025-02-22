@@ -1,3 +1,3 @@
 # Package used for development purposes
 # remind python3.12 project
-loguru==0.7.2
+loguru==0.7.3

@@ -60,7 +60,7 @@ Feature: test tutorial 601 Introduction to Linked Data (Scorpio)
       When  I prepare a GET HTTP request for "obtaining entity data by Id" to "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Building:store001"
       And   I set header Accept to application/ld+json
       And   I perform the request
-      Then  I receive a HTTP "200" response code from Scorpio with the body equal to "response601-05.json"
+      Then  I receive a HTTP "200" response code from Scorpio with the body equal to "response601-05-array.json"
 
 
 #
@@ -74,7 +74,8 @@ Feature: test tutorial 601 Introduction to Linked Data (Scorpio)
 #
     Scenario: [6] OBTAIN ENTITY DATA BY TYPE
       When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
-      And   With header 'Link$<https://smartdatamodels.org/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   With header 'Link$<https://smart-data-models.github.io/dataModel.Building/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   I set header Accept to application/ld+json
       And   With parameters "type$Building$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response601-06.json"
 
@@ -88,7 +89,8 @@ Feature: test tutorial 601 Introduction to Linked Data (Scorpio)
 #
     Scenario: [7] FILTER CONTEXT DATA BY COMPARING THE VALUES OF AN ATTRIBUTE
       When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
-      And   With header 'Link$<https://smartdatamodels.org/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   With header 'Link$<https://smart-data-models.github.io/dataModel.Building/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   I set header Accept to application/ld+json
       And   With parameters "type$Building$q$name=="Checkpoint Markt"$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response601-07.json"
 
@@ -102,7 +104,7 @@ Feature: test tutorial 601 Introduction to Linked Data (Scorpio)
 #
     Scenario: [8] FILTER CONTEXT DATA BY COMPARING THE VALUES OF AN ATTRIBUTE IN AN ARRAY
       When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
-      And   With header 'Link$<https://smartdatamodels.org/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   With header 'Link$<https://smart-data-models.github.io/dataModel.Building/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
       And   With parameters "type$Building$q$category=="commercial","office"$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response601-08.json"
 
@@ -116,7 +118,8 @@ Feature: test tutorial 601 Introduction to Linked Data (Scorpio)
 #
     Scenario: [9] FILTER CONTEXT DATA BY COMPARING THE VALUES OF A SUB-ATTRIBUTE
       When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
-      And   With header 'Link$<https://smartdatamodels.org/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   With header 'Link$<https://smart-data-models.github.io/dataModel.Building/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   I set header Accept to application/ld+json
       And   With parameters "type$Building$q$address[addressLocality]=="Kreuzberg"$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response601-09.json"
 
@@ -130,7 +133,7 @@ Feature: test tutorial 601 Introduction to Linked Data (Scorpio)
 #
     Scenario: [10] FILTER CONTEXT DATA BY QUERYING METADATA
       When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
-      And   With header 'Link$<https://smartdatamodels.org/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   With header 'Link$<https://smart-data-models.github.io/dataModel.Building/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
       And   With parameters "type$Building$q$address.verified==true$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response601-10.json"
 
@@ -144,6 +147,6 @@ Feature: test tutorial 601 Introduction to Linked Data (Scorpio)
 #
     Scenario: [11] FILTER CONTEXT DATA BY COMPARING THE VALUES OF A GEO:JSON ATTRIBUTE
       When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
-      And   With header 'Link$<https://smartdatamodels.org/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
+      And   With header 'Link$<https://smart-data-models.github.io/dataModel.Building/context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/json"'
       And   With parameters "type$Building$geometry$Point$coordinates$[13.3777,52.5162]$georel$near;maxDistance==2000$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response601-11.json"

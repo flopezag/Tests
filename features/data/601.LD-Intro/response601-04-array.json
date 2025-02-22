@@ -1,6 +1,6 @@
 [
     {
-        "@context": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.8.jsonld",
+        "@context": ["https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.8.jsonld"],
         "id": "urn:ngsi-ld:Building:store001",
         "type": "https://smartdatamodels.org/dataModel.Building/Building",
         "https://smartdatamodels.org/dataModel.Building/category": {
@@ -33,7 +33,7 @@
         }
     },
     {
-        "@context": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.8.jsonld",
+        "@context": ["https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.8.jsonld"],
         "id": "urn:ngsi-ld:Building:store002",
         "type": "https://smartdatamodels.org/dataModel.Building/Building",
         "https://smartdatamodels.org/dataModel.Building/category": {

@@ -27,7 +27,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #             2) attribute 'name' expected first, instead it is second after attribute 'https://schema.org/address'
 #
     Scenario: [1] DISPLAY ALL entities of a given type (BUILDINGS)
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
       And   With header 'NA$NA'
       And   With parameters "type$https://uri.fiware.org/ns/data-models#Building$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-01.json"
@@ -39,7 +39,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #             1) attribute 'name' expected first, instead it is last
 #
     Scenario: [2] DISPLAY ALL entities of a given type (PRODUCT)
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
       And   With header 'Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "type$https://fiware.github.io/tutorials.Step-by-Step/schema/Product$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-02.json"
@@ -51,7 +51,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #             1) attribute 'name' expected first, instead it is second after 'maxCapacity' attribute
 #
     Scenario: [3] DISPLAY ALL entities of a given type (SHELF)
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities"
       And   With header 'Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "type$Shelf$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-03.json"
@@ -63,7 +63,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #             1) attributes order completely mixed-up. Expected: name, maxCapacity, location, Current: location, maxCapacity, name
 #
     Scenario: [4] OBTAIN SHELF INFORMATION
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001/"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001/"
       And   With header 'Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-04.json"
@@ -73,7 +73,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #   Request 5
 #
     Scenario Outline: [5] ADDING 1-1 RELATIONSHIPS
-    When I send POST HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001/attrs"
+    When I send POST HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001/attrs"
 #    And  With the post header "fiware-servicepath": " /"
     And  With the post header "NA": "NA"
     And  With the body request described in an Scorpio file "<file>"
@@ -100,7 +100,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #             4) attributes requestedBy, installedBy, statusOfWork miss the indication of the schema (https://fiware.github.io/tutorials.Step-by-Step/schema/)
 #
     Scenario: [6] OBTAIN THE UPDATED SHELF
-      When I send GET HTTP request to "http://localhost:9090/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001"
+      When I send GET HTTP request to "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001"
       Then I receive a HTTP "200" response code from Scorpio with the body equal to "response602-06.json"
 
 
@@ -112,7 +112,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #                current: 'https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld'
 #
     Scenario: [7] FIND THE STORE IN WHICH A SPECIFIC SHELF IS LOCATED
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001/"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Shelf:unit001/"
       And   With header 'Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "attrs$locatedIn$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-07.json"
@@ -122,7 +122,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #   Request 8
 #
     Scenario: [8] FIND THE IDS OF ALL SHELF UNITS IN A STORE
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/"
       And   With header 'Accept$application/json$Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "type$Shelf$options$keyValues$attrs$locatedIn"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-08.json"
@@ -132,7 +132,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #   Request 9
 #
     Scenario Outline: [9] ADDING 1-MANY RELATIONSHIP
-      When I send POST HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/urn:ngsi-ld:Building:store001/attrs"
+      When I send POST HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Building:store001/attrs"
       And  With the post header "NA": "NA"
       And  With the body request described in an Scorpio file "<file>"
       Then I receive a HTTP response with the following Scorpio data
@@ -148,7 +148,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #   Request 10
 #
     Scenario: [10] FINDING ALL SHELF UNITS FOUND WITHIN A STORE
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/urn:ngsi-ld:Building:store001"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Building:store001"
       And   With header 'Accept$application/json$Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "options$keyValues$attrs$furniture"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-10.json"
@@ -158,7 +158,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #   Request 11
 #
     Scenario Outline: [11] CREATING COMPLEX RELATIONSHIPS
-      When I send POST HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/"
+      When I send POST HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/"
       And  With the post header "NA": "NA"
       And  With the body request described in an Scorpio file "<file>"
       Then I receive a HTTP response with the following Scorpio data
@@ -174,7 +174,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #   Request 12
 #
     Scenario: [12] FINDING ALL SHELF UNITS FOUND WITHIN A STORE
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/"
       And   With header 'Accept$application/json$Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "type$StockOrder$q$orderedProduct=="urn:ngsi-ld:Product:001"$attrs$requestedFor$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-12.json"
@@ -184,7 +184,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #   Request 13
 #
     Scenario: [13] FIND ALL PRODUCTS SOLD IN A STORE
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/"
       And   With header 'Accept$application/json$Link$<https://fiware.github.io/tutorials.Step-by-Step/tutorials-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"'
       And   With parameters "type$StockOrder$q$requestedFor=="urn:ngsi-ld:Building:store001"$attrs$orderedProduct$options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-13.json"
@@ -200,7 +200,7 @@ Feature: test tutorial 602 Linked Data: Relationships and Data Models (Scorpio)
 #                current attributes order: type, requestedFor, requestedBy, orderedProduct, stockCount, orderDate
 #
     Scenario: [14] OBTAIN STOCK ORDER
-      When  I send GET HTTP request to Scorpio at "http://localhost:9090/ngsi-ld/v1/entities/urn:ngsi-ld:StockOrder:001"
+      When  I send GET HTTP request to Scorpio at "http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:StockOrder:001"
       And   With header 'NA$NA'
       And   With parameters "options$keyValues"
       Then  I receive from Scorpio "200" response code with the body equal to "response602-14.json"

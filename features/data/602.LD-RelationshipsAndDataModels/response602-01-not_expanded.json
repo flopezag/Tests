@@ -4,7 +4,7 @@
     "id": "urn:ngsi-ld:Building:store001",
     "type": "https://uri.fiware.org/ns/data-models#Building",
     "https://uri.fiware.org/ns/data-models#category": {
-      "vocab": "https://wiki.openstreetmap.org/wiki/Tag:building%3Dcommercial"
+      "vocab": "openstreetmap:commercial"
     },
     "https://schema.org/address": {
       "https://schema.org/streetAddress": "Bornholmer Straße 65",
@@ -26,7 +26,7 @@
     "id": "urn:ngsi-ld:Building:store002",
     "type": "https://uri.fiware.org/ns/data-models#Building",
     "https://uri.fiware.org/ns/data-models#category": {
-      "vocab": "https://wiki.openstreetmap.org/wiki/Tag:building%3Dcommercial"
+      "vocab": "openstreetmap:commercial"
     },
     "https://schema.org/address": {
       "https://schema.org/streetAddress": "Friedrichstraße 44",

@@ -1,0 +1,36 @@
+{
+  "@context": ["https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context-v1.8.jsonld"],
+  "id": "urn:ngsi-ld:Building:store001",
+  "type": "https://smartdatamodels.org/dataModel.Building/Building",
+  "https://smartdatamodels.org/address": {
+    "type": "Property",
+    "value": {
+      "https://smartdatamodels.org/streetAddress": "Bornholmer Straße 65",
+      "https://smartdatamodels.org/addressRegion": "Berlin",
+      "https://smartdatamodels.org/addressLocality": "Prenzlauer Berg",
+      "https://smartdatamodels.org/postalCode": "10439"
+    },
+    "verified": {
+      "type": "Property",
+      "value": true
+    }
+  },
+  "https://smartdatamodels.org/dataModel.Building/category": {
+    "type": "VocabProperty",
+    "vocab": "commercial"
+  },
+  "https://smartdatamodels.org/name": {
+    "type": "Property",
+    "value": "Bösebrücke Einkauf"
+  },
+  "location": {
+    "type": "GeoProperty",
+    "value": {
+      "type": "Point",
+      "coordinates": [
+        13.3986,
+        52.5547
+      ]
+    }
+  }
+}
